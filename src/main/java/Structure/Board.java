@@ -3,6 +3,8 @@ package Structure;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.System.lineSeparator;
+
 public class Board {
     static final int BOARD_SIZE = 8;
     private Map<Coordinates, Disk> board = new HashMap<>();
@@ -24,6 +26,24 @@ public class Board {
     public void setDiskAt(Coordinates coordinates, Status status){
         getDiskAt(coordinates).changeStatusTo(status);
     }
-
-
+    static final String LINE = "  +---+---+---+---+---+---+---+---+"+lineSeparator();
+    static final String SPACE = " ";
+    static final String BAR =" | ";
+    @Override
+    public String toString(){
+        StringBuilder boardToString= new StringBuilder(SPACE);
+        for(int column=0; column<BOARD_SIZE; column++){
+            boardToString.append(SPACE.repeat(3)).append('a' + column);
+        }
+        boardToString.append(lineSeparator()).append(LINE);
+        for(int row=BOARD_SIZE; row>0; row--){
+            boardToString.append(row).append(BAR);
+            for(int column=1; column<=BOARD_SIZE; column++) {
+                boardToString.append(getDiskAt(new Coordinates(row,column)).getStatus().symbol()).append(BAR);
+                //this line should be refactored probably
+            }
+            boardToString.append(LINE);
+        }
+        return boardToString.toString();
+    }
 }

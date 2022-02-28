@@ -6,6 +6,11 @@ public class Disk {
     public Disk(Status status){
         this.status=status;
     }
+
+    public Status getStatus() {
+        return status;
+    }
+
     public void changeStatusTo(Status status){
         this.status=status;
     }
