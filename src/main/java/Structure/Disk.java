@@ -14,4 +14,17 @@ public class Disk {
     public void changeStatusTo(Status status){
         this.status=status;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Disk disk = (Disk) o;
+        return status == disk.status;
+    }
+    @Override
+    public int hashCode() {
+        return status.hashCode();
+    }
 }

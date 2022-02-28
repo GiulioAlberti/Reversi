@@ -11,8 +11,8 @@ public class Coordinates {
         this.column=column;
     }
     public Coordinates(String input){
-        this.row=input.charAt(1);
-        this.column=input.charAt(0)-'a';
+        this.row=input.charAt(0)-48;
+        this.column=(char)(input.charAt(1)-'a'+1);
     }
 
     public int get_row(){
@@ -24,11 +24,24 @@ public class Coordinates {
 
     @Override
     public String toString(){
-        return (column+'a')+""+row;
+        return row+""+(char)(column-1+'a');
     }
 
     public boolean areValid(){
         return (1<=row && row <=BOARD_SIZE && 1<=column && column <=BOARD_SIZE);
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Coordinates coord = (Coordinates) o;
+
+        if (row != coord.row) return false;
+        return column == coord.column;
+    }
+    @Override
+    public int hashCode() {
+        return 31*row+column;
+    }
 }

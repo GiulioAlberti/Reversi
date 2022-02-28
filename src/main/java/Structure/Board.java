@@ -33,7 +33,7 @@ public class Board {
     public String toString(){
         StringBuilder boardToString= new StringBuilder(SPACE);
         for(int column=0; column<BOARD_SIZE; column++){
-            boardToString.append(SPACE.repeat(3)).append('a' + column);
+            boardToString.append(SPACE.repeat(3)).append((char)('a' + column));
         }
         boardToString.append(lineSeparator()).append(LINE);
         for(int row=BOARD_SIZE; row>0; row--){
@@ -42,7 +42,7 @@ public class Board {
                 boardToString.append(getDiskAt(new Coordinates(row,column)).getStatus().symbol()).append(BAR);
                 //this line should be refactored probably
             }
-            boardToString.append(LINE);
+            boardToString.append(lineSeparator()+LINE);
         }
         return boardToString.toString();
     }
