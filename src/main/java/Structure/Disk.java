@@ -15,6 +15,10 @@ public class Disk {
         this.status=status;
     }
 
+    public boolean isEmpty(){
+        return status.equals(Status.EMPTY);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

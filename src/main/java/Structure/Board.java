@@ -2,6 +2,7 @@ package Structure;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static java.lang.System.lineSeparator;
 
@@ -26,6 +27,11 @@ public class Board {
     public void setDiskAt(Coordinates coordinates, Status status){
         getDiskAt(coordinates).changeStatusTo(status);
     }
+
+    public Set<Coordinates> coordinatesSet(){
+        return board.keySet();
+    }
+
     static final String LINE = "  +---+---+---+---+---+---+---+---+"+lineSeparator();
     static final String SPACE = " ";
     static final String BAR =" | ";

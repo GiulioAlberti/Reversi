@@ -2,6 +2,8 @@ package Abstract;
 
 import Structure.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Move {
@@ -15,19 +17,26 @@ public class Move {
         this.enemyDisk = new Disk((disk.getStatus()==Status.BLACK)? Status.WHITE : Status.BLACK);
     }
 
-    public Stream<Coordinates> findEnemyPiecesToCaptureOnRight(Coordinates coordinates){
+    public Stream<Coordinates> findEnemyPiecesToCapture(Coordinates coordinates, Direction direction){
         Stream.Builder<Coordinates> builder=Stream.builder();
-        Coordinates updatedCoordinates = coordinates.moveInDirection(Direction.RIGHT,1);
-        while(board.getDiskAt(updatedCoordinates).equals(enemyDisk)){
+        Coordinates updatedCoordinates = coordinates.moveInDirection(direction,1);
+        while(updatedCoordinates.areValid() && board.getDiskAt(updatedCoordinates).equals(enemyDisk)){
             builder.add(updatedCoordinates);
-            updatedCoordinates = updatedCoordinates.moveInDirection(Direction.RIGHT,1);
+            updatedCoordinates = updatedCoordinates.moveInDirection(direction,1);
         }
         return builder.build();
     }
 
-    public boolean canCaptureOnTheRight(Coordinates coordinates) {
-        int numberOfDisksToCapture = (int) findEnemyPiecesToCaptureOnRight(coordinates).count();
-        return numberOfDisksToCapture>0 && board.getDiskAt(coordinates.moveInDirection(Direction.RIGHT,numberOfDisksToCapture+1)).equals(disk);
+    public boolean canCaptureInAGivenDirection(Coordinates coordinates, Direction direction) {
+        int numberOfDisksToCapture = (int) findEnemyPiecesToCapture(coordinates, direction).count();
+        return numberOfDisksToCapture>0 && board.getDiskAt(coordinates.moveInDirection(direction,numberOfDisksToCapture+1)).equals(disk);
+    }
+    public boolean isCandidateMove(Coordinates coordinates){
+        return board.getDiskAt(coordinates).isEmpty() && Stream.of(Direction.values())
+                .anyMatch(direction -> canCaptureInAGivenDirection(coordinates,direction));
     }
 
+    public List<Coordinates> availableMoves(){
+        return board.coordinatesSet().stream().filter(this::isCandidateMove).collect(Collectors.toList());
+    }
 }
