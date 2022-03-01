@@ -37,11 +37,13 @@ public class MoveTest {
         board.othelloSetup();
         Disk disk = new Disk(Status.BLACK);
         Move move=new Move(board, disk);
-        List<Coordinates> listOfOptions= move.availableMoves();
-        StringBuilder moves= new StringBuilder();
-        for (Coordinates coord : listOfOptions) {
-            moves.append(coord.toString());
-        }
-        assert(moves.toString().equals("4f5c6d3e"));
+        List<Coordinates> listOfOptions = move.availableMoves();
+        List<Coordinates> correct = new ArrayList<>();
+        correct.add(new Coordinates("4f"));
+        correct.add(new Coordinates("3e"));
+        correct.add(new Coordinates("5c"));
+        correct.add(new Coordinates("6d"));
+        assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
+
     }
 }
