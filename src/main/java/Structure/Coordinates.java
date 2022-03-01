@@ -22,6 +22,9 @@ public class Coordinates {
         return column;
     }
 
+    public Coordinates moveInDirection(Direction direction, int iterations){
+        return new Coordinates(this.row+iterations*direction.getRowUpdate(), this.column+ iterations*direction.getColumnUpdate());
+    }
     @Override
     public String toString(){
         return row+""+(char)(column-1+'a');
