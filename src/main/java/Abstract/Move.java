@@ -43,4 +43,11 @@ public class Move {
         return Stream.of(Direction.values()).filter(direction -> canCaptureInAGivenDirection(coordinates,direction))
                 .flatMap(direction -> findEnemyPiecesToCapture(coordinates, direction)).collect(Collectors.toList());
     }
+    public void placeDiskAndCapture(Coordinates coordinates){
+        List<Coordinates> enemyCapturedDisks = capturedDisks(coordinates);
+        board.setDiskAt(coordinates,disk.getStatus());
+        for (Coordinates enemyCoordinates : enemyCapturedDisks){
+            board.setDiskAt(enemyCoordinates, disk.getStatus());
+        }
+    }
 }

@@ -2,9 +2,15 @@ import Abstract.*;
 import Structure.*;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MoveTest {
@@ -54,7 +60,6 @@ public class MoveTest {
         board.setDiskAt(new Coordinates("4e"),Status.WHITE);
         Move move=new Move(board, disk);
         List<Coordinates> listOfOptions = move.availableMoves();
-        List<Coordinates> correct = new ArrayList<>();
         assert(listOfOptions.isEmpty());
 
     }
@@ -98,5 +103,17 @@ public class MoveTest {
         correct.add(new Coordinates("2c"));
         correct.add(new Coordinates("3c"));
         assert(listOfCaptured.containsAll(correct) && correct.containsAll(listOfCaptured));
+    }
+    @Test
+    void firstCapture() throws URISyntaxException, IOException {
+        URL file= getClass().getClassLoader().getResource("FirstMove");
+        assert file != null;
+        String boardString = Files.readString(Path.of(file.toURI()));
+        Board board =new Board();
+        board.othelloSetup();
+        Disk disk = new Disk(Status.BLACK);
+        Move move=new Move(board, disk);
+        move.placeDiskAndCapture(new Coordinates("5c"));
+        assertEquals(boardString, board.toString());
     }
 }
