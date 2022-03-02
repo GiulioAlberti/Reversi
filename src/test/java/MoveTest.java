@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MoveTest {
@@ -45,5 +44,36 @@ public class MoveTest {
         correct.add(new Coordinates("6d"));
         assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
 
+    }
+    @Test
+    void noAvailableMoves(){
+        Board board =new Board();
+        Disk disk = new Disk(Status.WHITE);
+        board.setDiskAt(new Coordinates("4c"),Status.WHITE);
+        board.setDiskAt(new Coordinates("4d"),Status.BLACK);
+        board.setDiskAt(new Coordinates("4e"),Status.WHITE);
+        Move move=new Move(board, disk);
+        List<Coordinates> listOfOptions = move.availableMoves();
+        List<Coordinates> correct = new ArrayList<>();
+        assert(listOfOptions.isEmpty());
+
+    }
+    @Test
+    void DiagonallyAvailableMoves(){
+        Board board =new Board();
+        Disk disk = new Disk(Status.BLACK);
+        board.setDiskAt(new Coordinates("2b"),Status.WHITE);
+        board.setDiskAt(new Coordinates("3c"),Status.BLACK);
+        board.setDiskAt(new Coordinates("4b"),Status.WHITE);
+        board.setDiskAt(new Coordinates("4d"),Status.WHITE);
+        board.setDiskAt(new Coordinates("2d"),Status.WHITE);
+        Move move=new Move(board, disk);
+        List<Coordinates> listOfOptions = move.availableMoves();
+        List<Coordinates> correct = new ArrayList<>();
+        correct.add(new Coordinates("1a"));
+        correct.add(new Coordinates("1e"));
+        correct.add(new Coordinates("5a"));
+        correct.add(new Coordinates("5e"));
+        assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
     }
 }
