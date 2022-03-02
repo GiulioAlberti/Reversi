@@ -39,4 +39,8 @@ public class Move {
     public List<Coordinates> availableMoves(){
         return board.coordinatesSet().stream().filter(this::isCandidateMove).collect(Collectors.toList());
     }
+    public List<Coordinates> capturedDisks(Coordinates coordinates){
+        return Stream.of(Direction.values()).filter(direction -> canCaptureInAGivenDirection(coordinates,direction))
+                .flatMap(direction -> findEnemyPiecesToCapture(coordinates, direction)).collect(Collectors.toList());
+    }
 }

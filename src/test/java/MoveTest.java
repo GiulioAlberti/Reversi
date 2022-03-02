@@ -59,7 +59,7 @@ public class MoveTest {
 
     }
     @Test
-    void DiagonallyAvailableMoves(){
+    void diagonallyAvailableMoves(){
         Board board =new Board();
         Disk disk = new Disk(Status.BLACK);
         board.setDiskAt(new Coordinates("2b"),Status.WHITE);
@@ -75,5 +75,28 @@ public class MoveTest {
         correct.add(new Coordinates("5a"));
         correct.add(new Coordinates("5e"));
         assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
+    }
+    @Test
+    void listOfCapturedDisks(){
+        Board board =new Board();
+        Disk disk = new Disk(Status.BLACK);
+        board.setDiskAt(new Coordinates("6b"),Status.BLACK);
+        board.setDiskAt(new Coordinates("4d"),Status.BLACK);
+        board.setDiskAt(new Coordinates("2d"),Status.BLACK);
+        for(int i=3; i<6; i++){
+            board.setDiskAt(new Coordinates(i,2),Status.WHITE);
+        }
+        for(int i=2; i<4; i++){
+            board.setDiskAt(new Coordinates(i,3),Status.WHITE);
+        }
+        Move move=new Move(board, disk);
+        List<Coordinates> listOfCaptured = move.capturedDisks(new Coordinates("2b"));
+        List<Coordinates> correct = new ArrayList<>();
+        correct.add(new Coordinates("3b"));
+        correct.add(new Coordinates("4b"));
+        correct.add(new Coordinates("5b"));
+        correct.add(new Coordinates("2c"));
+        correct.add(new Coordinates("3c"));
+        assert(listOfCaptured.containsAll(correct) && correct.containsAll(listOfCaptured));
     }
 }
