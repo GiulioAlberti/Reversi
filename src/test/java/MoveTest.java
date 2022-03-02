@@ -1,6 +1,8 @@
 import Abstract.*;
 import Structure.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -14,27 +16,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MoveTest {
-    @Test
-    void canCaptureEnemyPiecesOnTheRight(){
+    @ParameterizedTest
+    @CsvSource({"RIGHT, 5c", "DOWN, 6d", "LEFT, 4f", "UP, 3e"})
+    void canCaptureEnemyPiecesInADirection(Direction direction, String addedDisk){
         Board board =new Board();
         board.othelloSetup();
-        Coordinates coordinates= new Coordinates(5,3);
+        Coordinates coordinates= new Coordinates(addedDisk);
         Disk disk = new Disk(Status.BLACK);
         Move move=new Move(board, disk);
-        boolean response= move.canCaptureInAGivenDirection(coordinates, Direction.RIGHT);
+        boolean response= move.canCaptureInAGivenDirection(coordinates, direction);
         assertTrue(response);
-
-    }
-    @Test
-    void canCaptureEnemyPiecesUp(){
-        Board board =new Board();
-        board.othelloSetup();
-        Coordinates coordinates= new Coordinates(3,4);
-        Disk disk = new Disk(Status.WHITE);
-        Move move=new Move(board, disk);
-        boolean response= move.canCaptureInAGivenDirection(coordinates, Direction.UP);
-        assertTrue(response);
-
     }
     @Test
     void firstAvailableMoves(){
@@ -49,7 +40,6 @@ public class MoveTest {
         correct.add(new Coordinates("5c"));
         correct.add(new Coordinates("6d"));
         assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
-
     }
     @Test
     void noAvailableMoves(){
