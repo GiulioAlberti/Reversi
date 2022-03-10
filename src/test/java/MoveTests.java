@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MoveTest {
+public class MoveTests {
     @ParameterizedTest
     @CsvSource({"RIGHT, 5c", "DOWN, 6d", "LEFT, 4f", "UP, 3e"})
     void canCaptureEnemyPiecesInADirection(Direction direction, String addedDisk){
@@ -85,7 +85,7 @@ public class MoveTest {
             board.setDiskAt(new Coordinates(i,3),Status.WHITE);
         }
         Move move=new Move(board, disk);
-        List<Coordinates> listOfCaptured = move.capturedDisks(new Coordinates("2b"));
+        List<Coordinates> listOfCaptured = move.capturedDisksWith(new Coordinates("2b"));
         List<Coordinates> correct = new ArrayList<>();
         correct.add(new Coordinates("3b"));
         correct.add(new Coordinates("4b"));

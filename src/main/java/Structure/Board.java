@@ -37,11 +37,7 @@ public class Board {
     static final String BAR =" | ";
     @Override
     public String toString(){
-        StringBuilder boardToString= new StringBuilder(SPACE);
-        for(int column=0; column<BOARD_SIZE; column++){
-            boardToString.append(SPACE.repeat(3)).append((char)('a' + column));
-        }
-        boardToString.append(lineSeparator()).append(LINE);
+        StringBuilder boardToString= new StringBuilder(LINE);
         for(int row=BOARD_SIZE; row>0; row--){
             boardToString.append(row).append(BAR);
             for(int column=1; column<=BOARD_SIZE; column++) {
@@ -49,6 +45,10 @@ public class Board {
                 //this line should be refactored probably
             }
             boardToString.append(lineSeparator()).append(LINE);
+        }
+        boardToString.append(SPACE);
+        for(int column=0; column<BOARD_SIZE; column++){
+            boardToString.append(SPACE.repeat(3)).append((char)('a' + column));
         }
         return boardToString.toString();
     }
