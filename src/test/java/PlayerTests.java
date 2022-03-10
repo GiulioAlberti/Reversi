@@ -38,4 +38,15 @@ public class PlayerTests {
         Coordinates expected=new Coordinates(coordinates);
         assertEquals(expected, chosenMove);
     }
+    @Test
+    void randomPlayerMove(){
+        Board board =new Board();
+        board.othelloSetup();
+        Disk disk = new Disk(Status.BLACK);
+        Move move=new Move(board, disk);
+        RandomNumberGenerator rng= new RandomNumberGenerator();
+        RandomPlayer player =new RandomPlayer("Random", disk, rng);
+        Coordinates chosenMove= player.chooseMove(move);
+        assert(move.availableMoves().contains(chosenMove));
+    }
 }
