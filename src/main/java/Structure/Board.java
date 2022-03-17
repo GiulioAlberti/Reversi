@@ -7,7 +7,7 @@ import java.util.Set;
 import static java.lang.System.lineSeparator;
 
 public class Board {
-    static final int BOARD_SIZE = 8;
+    public static final int BOARD_SIZE = 8;
     private final Map<Coordinates, Disk> board = new HashMap<>();
 
     public Board(){
@@ -23,6 +23,9 @@ public class Board {
     }
     public Disk getDiskAt(Coordinates coordinates){
         return board.get(coordinates);
+    }
+    public Status getStatusAt(Coordinates coordinates){
+        return getDiskAt(coordinates).getStatus();
     }
     public void setDiskAt(Coordinates coordinates, Status status){
         getDiskAt(coordinates).changeStatusTo(status);
@@ -41,8 +44,7 @@ public class Board {
         for(int row=BOARD_SIZE; row>0; row--){
             boardToString.append(row).append(BAR);
             for(int column=1; column<=BOARD_SIZE; column++) {
-                boardToString.append(getDiskAt(new Coordinates(row,column)).getStatus().symbol()).append(BAR);
-                //this line should be refactored probably
+                boardToString.append(getStatusAt(new Coordinates(row,column)).symbol()).append(BAR);
             }
             boardToString.append(lineSeparator()).append(LINE);
         }
