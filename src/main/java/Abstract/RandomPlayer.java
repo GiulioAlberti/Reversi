@@ -13,6 +13,8 @@ public class RandomPlayer extends Player{
     @Override
     public Coordinates chooseMove(Move move){
         List<Coordinates> availableMoves=move.availableMoves();
-        return availableMoves.get(rng.getRandomInteger(availableMoves.size()));
+        Coordinates chosenCoordinates=availableMoves.get(rng.getRandomInteger(availableMoves.size()));
+        System.out.println("The chosen move is "+chosenCoordinates);
+        return chosenCoordinates;
     }
 }

@@ -21,6 +21,8 @@ public class GreedyPlayer extends Player{
                 numberOfCaptures=move.capturedDisksWith(available.get(i)).size();
             }
         }
-        return available.get(index);
+        Coordinates chosenCoordinates=available.get(index);
+        System.out.println("The chosen move is "+chosenCoordinates);
+        return chosenCoordinates;
     }
 }

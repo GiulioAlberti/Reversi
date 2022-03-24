@@ -29,6 +29,7 @@ public class Move {
 
     public boolean canCaptureInAGivenDirection(Coordinates coordinates, Direction direction) {
         int numberOfDisksToCapture = (int) findEnemyPiecesToCapture(coordinates, direction).count();
+        if(!coordinates.moveInDirection(direction,numberOfDisksToCapture+1).areValid()){return false;}
         return numberOfDisksToCapture>0 && board.getDiskAt(coordinates.moveInDirection(direction,numberOfDisksToCapture+1)).equals(disk);
     }
     public boolean isCandidateMove(Coordinates coordinates){
