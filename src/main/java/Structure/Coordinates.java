@@ -15,13 +15,6 @@ public class Coordinates {
         this.column=(char)(input.charAt(1)-'a'+1);
     }
 
-    public int get_row(){
-        return row;
-    }
-    public int get_column(){
-        return column;
-    }
-
     public Coordinates moveInDirection(Direction direction, int iterations){
         return new Coordinates(this.row+iterations*direction.getRowUpdate(), this.column+ iterations*direction.getColumnUpdate());
     }
@@ -38,10 +31,10 @@ public class Coordinates {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Coordinates coord = (Coordinates) o;
+        Coordinates coordinates = (Coordinates) o;
 
-        if (row != coord.row) return false;
-        return column == coord.column;
+        if (row != coordinates.row) return false;
+        return column == coordinates.column;
     }
     @Override
     public int hashCode() {

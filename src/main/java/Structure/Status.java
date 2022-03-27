@@ -1,7 +1,7 @@
 package Structure;
 
 public enum Status {
-    EMPTY('.'),
+    EMPTY(' '),
     BLACK('B'),
     WHITE('W');
 

@@ -11,38 +11,12 @@ public class GameLogic {
     public GameLogic(Scanner sin){
         this.sin=sin;
     }
-    private Player createPlayer(Disk disk){
-        int typeOfPlayer = defineTypeOfPlayer();
-        String name = getPlayerNameFromInput();
-        Player player;
-        switch(typeOfPlayer){
-            case 1 -> player = new HumanPlayer(name, disk);
-            case 2-> player = new GreedyPlayer(name, disk);
-            default ->{
-                RandomNumberGenerator rng =new RandomNumberGenerator();
-                player = new RandomPlayer(name, disk, rng);
-            }
-        }
-        return player;
-    }
-
-    private int defineTypeOfPlayer(){
-        System.out.println("What type of player do you want? '1' if human, '2' if greedy, other integer if random: ");
-        int type;
-        type = sin.nextInt();
-        return type;
-    }
-
-    private String getPlayerNameFromInput(){
-        System.out.println("Enter the name for this player: ");
-        return sin.next();
-    }
-
     public void initializeGame(){
         Board board = new Board();
         board.othelloSetup();
-        Player playerB = createPlayer(new Disk(Status.BLACK));
-        Player playerW = createPlayer(new Disk(Status.WHITE));
+        PlayerCreator playerCreator=new PlayerCreator(sin);
+        Player playerB = playerCreator.createPlayer(new Disk(Status.BLACK));
+        Player playerW = playerCreator.createPlayer(new Disk(Status.WHITE));
         turnsSystem(board, playerW, playerB);
     }
     private void turnsSystem(Board board, Player playerW, Player playerB){
