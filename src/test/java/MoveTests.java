@@ -9,7 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,11 +34,9 @@ public class MoveTests {
         Disk disk = new Disk(Status.BLACK);
         Move move=new Move(board, disk);
         List<Coordinates> listOfOptions = move.availableMoves();
-        List<Coordinates> correct = new ArrayList<>();
-        correct.add(new Coordinates("4f"));
-        correct.add(new Coordinates("3e"));
-        correct.add(new Coordinates("5c"));
-        correct.add(new Coordinates("6d"));
+        Coordinates[] arrayOfCoordinates={new Coordinates("4f"),new Coordinates("3e"),
+                new Coordinates("5c"),new Coordinates("6d")};
+        List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
         assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
     }
     @Test
@@ -57,18 +55,16 @@ public class MoveTests {
     void diagonallyAvailableMoves(){
         Board board =new Board();
         Disk disk = new Disk(Status.BLACK);
-        board.setDiskAt(new Coordinates("2b"),Status.WHITE);
+        String[] whiteDisks={"2b","4b","4d","2d"};
+        for(String coordinates : whiteDisks){
+            board.setDiskAt(new Coordinates(coordinates),Status.WHITE);
+        }
         board.setDiskAt(new Coordinates("3c"),Status.BLACK);
-        board.setDiskAt(new Coordinates("4b"),Status.WHITE);
-        board.setDiskAt(new Coordinates("4d"),Status.WHITE);
-        board.setDiskAt(new Coordinates("2d"),Status.WHITE);
         Move move=new Move(board, disk);
         List<Coordinates> listOfOptions = move.availableMoves();
-        List<Coordinates> correct = new ArrayList<>();
-        correct.add(new Coordinates("1a"));
-        correct.add(new Coordinates("1e"));
-        correct.add(new Coordinates("5a"));
-        correct.add(new Coordinates("5e"));
+        Coordinates[] arrayOfCoordinates={new Coordinates("1a"),new Coordinates("1e"),
+                new Coordinates("5a"),new Coordinates("5e")};
+        List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
         assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
     }
     @Test
@@ -86,12 +82,9 @@ public class MoveTests {
         }
         Move move=new Move(board, disk);
         List<Coordinates> listOfCaptured = move.capturedDisksWith(new Coordinates("2b"));
-        List<Coordinates> correct = new ArrayList<>();
-        correct.add(new Coordinates("3b"));
-        correct.add(new Coordinates("4b"));
-        correct.add(new Coordinates("5b"));
-        correct.add(new Coordinates("2c"));
-        correct.add(new Coordinates("3c"));
+        Coordinates[] arrayOfCoordinates={new Coordinates("3b"),new Coordinates("4b"),
+                new Coordinates("5b"),new Coordinates("2c"),new Coordinates("3c")};
+        List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
         assert(listOfCaptured.containsAll(correct) && correct.containsAll(listOfCaptured));
     }
     @Test
