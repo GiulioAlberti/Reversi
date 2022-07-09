@@ -5,6 +5,7 @@ import static Structure.Board.BOARD_SIZE;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FinalScoreTests {
     @Test
@@ -21,6 +22,6 @@ public class FinalScoreTests {
         FinalScore score= new FinalScore(board,player1, player2);
         score.pointsCalculator();
         score.declareFinalScore();
-        assert(score.getWhiteScore()==2*BOARD_SIZE && score.getBlackScore()==BOARD_SIZE);
+        assertTrue(score.getWhiteScore()==2*BOARD_SIZE && score.getBlackScore()==BOARD_SIZE);
     }
 }
