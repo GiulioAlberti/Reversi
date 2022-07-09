@@ -1,6 +1,6 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.Disk;
+import units.exam.physical.Disk;
 
 import java.util.Scanner;
 

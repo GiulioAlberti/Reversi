@@ -1,4 +1,4 @@
-package Abstract;
+package units.exam.logical;
 
 import java.util.Random;
 

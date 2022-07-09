@@ -1,4 +1,6 @@
-package Abstract;
+package units.exam;
+import units.exam.logical.GameLogic;
+
 import java.util.Scanner;
 
 public class Main {

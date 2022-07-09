@@ -1,6 +1,8 @@
-import Structure.Board;
-import Structure.Coordinates;
-import Structure.Status;
+package units.exam.physical;
+
+import units.exam.physical.Board;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Status;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

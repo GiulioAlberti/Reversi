@@ -1,11 +1,11 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.Coordinates;
-import Structure.Disk;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Disk;
 
 import java.util.List;
 
-public class GreedyPlayer extends Player{
+public class GreedyPlayer extends Player {
     public GreedyPlayer(String name, Disk disk) {
         super(name, disk);
     }

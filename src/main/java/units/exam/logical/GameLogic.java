@@ -1,6 +1,9 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.*;
+import units.exam.physical.Board;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Disk;
+import units.exam.physical.Status;
 
 import java.util.Scanner;
 

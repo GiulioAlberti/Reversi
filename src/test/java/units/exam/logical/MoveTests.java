@@ -1,8 +1,10 @@
-import Abstract.*;
-import Structure.*;
+package units.exam.logical;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import units.exam.logical.Move;
+import units.exam.physical.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

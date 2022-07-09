@@ -1,6 +1,6 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.*;
+import units.exam.physical.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ public class Move {
     public Move(Board board, Disk disk) {
         this.board = board;
         this.disk = disk;
-        this.enemyDisk = new Disk((disk.getStatus()==Status.BLACK)? Status.WHITE : Status.BLACK);
+        this.enemyDisk = new Disk((disk.getStatus()== Status.BLACK)? Status.WHITE : Status.BLACK);
     }
 
     public Stream<Coordinates> findEnemyPiecesToCapture(Coordinates coordinates, Direction direction){

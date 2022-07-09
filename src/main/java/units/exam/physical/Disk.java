@@ -1,4 +1,4 @@
-package Structure;
+package units.exam.physical;
 
 public class Disk {
     private Status status;

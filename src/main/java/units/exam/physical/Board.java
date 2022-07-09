@@ -1,4 +1,4 @@
-package Structure;
+package units.exam.physical;
 
 import java.util.HashMap;
 import java.util.Map;

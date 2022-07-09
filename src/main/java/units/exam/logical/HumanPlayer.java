@@ -1,10 +1,11 @@
-package Abstract;
-import Structure.*;
+package units.exam.logical;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Disk;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Player {
     private static Scanner sin;
     public static void setScanner(Scanner sin) {
         HumanPlayer.sin = sin;

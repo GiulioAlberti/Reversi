@@ -1,6 +1,7 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.*;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Disk;
 
 
 public abstract class Player {

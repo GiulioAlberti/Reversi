@@ -1,10 +1,11 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.*;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Disk;
 
 import java.util.List;
 
-public class RandomPlayer extends Player{
+public class RandomPlayer extends Player {
     private final RandomNumberGenerator rng;
     public RandomPlayer(String name, Disk disk, RandomNumberGenerator rng) {
         super(name, disk);

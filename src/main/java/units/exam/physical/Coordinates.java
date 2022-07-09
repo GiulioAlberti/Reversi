@@ -1,6 +1,6 @@
-package Structure;
+package units.exam.physical;
 
-import static Structure.Board.BOARD_SIZE;
+import static units.exam.physical.Board.BOARD_SIZE;
 
 public class Coordinates {
     private final int row;

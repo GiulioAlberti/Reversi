@@ -1,7 +1,10 @@
-package Abstract;
+package units.exam.logical;
 
-import Structure.*;
-import static Structure.Board.BOARD_SIZE;
+import units.exam.physical.Board;
+import units.exam.physical.Coordinates;
+import units.exam.physical.Status;
+
+import static units.exam.physical.Board.BOARD_SIZE;
 
 public class FinalScore {
     private final Board board;
