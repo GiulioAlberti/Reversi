@@ -17,10 +17,9 @@ public class PlayerTests {
         board.othelloSetup();
         Disk disk = new Disk(Status.BLACK);
         Move move=new Move(board, disk);
-        HumanPlayer player =new HumanPlayer("Giulio", disk);
         String input = "5c";
         ByteArrayInputStream fakeScanner = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
-        HumanPlayer.setScanner(new Scanner(fakeScanner));
+        HumanPlayer player =new HumanPlayer("Giulio", disk, new Scanner(fakeScanner));
         Coordinates chosenMove= player.chooseMove(move);
         Coordinates expected=new Coordinates("5c");
         assertEquals(expected, chosenMove);

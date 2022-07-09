@@ -33,8 +33,6 @@ public class FinalScore {
                 switch (currentStatus){
                     case WHITE -> whiteScore+=1;
                     case BLACK -> blackScore+=1;
-                    default ->{
-                    }
                 }
             }
         }

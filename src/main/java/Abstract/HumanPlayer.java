@@ -9,9 +9,8 @@ public class HumanPlayer extends Player{
     public static void setScanner(Scanner sin) {
         HumanPlayer.sin = sin;
     }
-    public HumanPlayer(String name, Disk disk) {
+    public HumanPlayer(String name, Disk disk, Scanner sin) {
         super(name, disk);
-        Scanner sin = new Scanner(System.in);
         setScanner(sin);
     }
     @Override

@@ -4,6 +4,8 @@ import static Structure.Board.BOARD_SIZE;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Scanner;
+
 public class finalScoreTests {
     @Test
     void scoreCalculate(){
@@ -13,8 +15,9 @@ public class finalScoreTests {
             board.setDiskAt(new Coordinates(row,2), Status.WHITE);
             board.setDiskAt(new Coordinates(row,3), Status.WHITE);
         }
-        HumanPlayer player1 =new HumanPlayer("playerW",new Disk(Status.WHITE));
-        HumanPlayer player2 =new HumanPlayer("playerB",new Disk(Status.BLACK));
+        Scanner sin = new Scanner(System.in);
+        HumanPlayer player1 =new HumanPlayer("playerW",new Disk(Status.WHITE), sin);
+        HumanPlayer player2 =new HumanPlayer("playerB",new Disk(Status.BLACK),sin);
         FinalScore score= new FinalScore(board,player1, player2);
         score.pointsCalculator();
         score.declareFinalScore();

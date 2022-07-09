@@ -14,7 +14,7 @@ public class PlayerCreator {
         String name = getPlayerNameFromInput();
         Player player;
         switch(typeOfPlayer){
-            case '1'-> player = new HumanPlayer(name, disk);
+            case '1'-> player = new HumanPlayer(name, disk, sin);
             case '2'-> player = new GreedyPlayer(name, disk);
             case '3'->{
                 RandomNumberGenerator rng =new RandomNumberGenerator();
