@@ -38,6 +38,6 @@ public class Coordinates {
     }
     @Override
     public int hashCode() {
-        return 31*row+column;
+        return 23*row+column;
     }
 }

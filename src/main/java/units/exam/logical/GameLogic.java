@@ -29,7 +29,7 @@ public class GameLogic {
         do{
             turn+=1;
             Player currentPlayer=(turn%2==1)?playerB:playerW;
-            System.out.println("It's "+currentPlayer.getName()+"'s turn."+lineSeparator());
+            System.out.println("It's "+currentPlayer.getName()+" ("+currentPlayer.getDisk().getStatus()+")"+"'s turn."+lineSeparator());
             Move turnMove=new Move(board, currentPlayer.disk);
             if(turnMove.availableMoves().isEmpty()){
                 if(passCounter==1) break;

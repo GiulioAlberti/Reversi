@@ -48,7 +48,7 @@ public class FinalScore {
         }
         else{
             String winnerName=(whiteScore>blackScore)? whitePlayer.getName() : blackPlayer.getName();
-            System.out.println("The winner is "+winnerName+" and the final score is: "+whiteScore+" W-B "+blackScore);
+            System.out.println("The winner is "+winnerName+"! The final score is: "+whiteScore+" W-B "+blackScore);
         }
     }
 }

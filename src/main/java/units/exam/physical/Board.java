@@ -35,7 +35,7 @@ public class Board {
         return boardMap.keySet();
     }
 
-    static final String LINE = "  +---+---+---+---+---+---+---+---+"+lineSeparator();
+    static final String LINE = "  +"+"---+".repeat(BOARD_SIZE)+lineSeparator();
     static final String SPACE = " ";
     static final String BAR =" | ";
     @Override

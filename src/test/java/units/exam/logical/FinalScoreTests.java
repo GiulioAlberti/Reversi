@@ -3,8 +3,6 @@ package units.exam.logical;
 import static units.exam.physical.Board.BOARD_SIZE;
 
 import org.junit.jupiter.api.Test;
-import units.exam.logical.FinalScore;
-import units.exam.logical.HumanPlayer;
 import units.exam.physical.Board;
 import units.exam.physical.Coordinates;
 import units.exam.physical.Disk;
