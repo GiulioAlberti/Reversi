@@ -23,7 +23,7 @@ public class CoordinatesTests {
     void coordinatesWithDifferentConstructors(int row, int column, String string){
         Coordinates coordinatesWithInts = new Coordinates(row,column);
         Coordinates coordinatesWithString = new Coordinates(string);
-        assert coordinatesWithInts.equals(coordinatesWithString);
+        assertEquals(coordinatesWithInts,coordinatesWithString);
     }
     @ParameterizedTest
     @CsvSource({"6a, RIGHT, 2, 6c", "1e, UP_LEFT, 3, 4b", "4g, DOWN, 1, 3g"})

@@ -1,5 +1,8 @@
 import Abstract.*;
-import Structure.*;
+import Structure.Board;
+import Structure.Coordinates;
+import Structure.Disk;
+import Structure.Status;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTests {
     @Test
@@ -46,6 +50,6 @@ public class PlayerTests {
         RandomNumberGenerator rng= new RandomNumberGenerator();
         RandomPlayer player =new RandomPlayer("Random", disk, rng);
         Coordinates chosenMove= player.chooseMove(move);
-        assert(move.availableMoves().contains(chosenMove));
+        assertTrue(move.availableMoves().contains(chosenMove));
     }
 }

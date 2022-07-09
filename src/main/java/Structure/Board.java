@@ -8,12 +8,12 @@ import static java.lang.System.lineSeparator;
 
 public class Board {
     public static final int BOARD_SIZE = 8;
-    private final Map<Coordinates, Disk> board = new HashMap<>();
+    private final Map<Coordinates, Disk> boardMap = new HashMap<>();
 
     public Board(){
         for(int row=1; row<=BOARD_SIZE; row++)
             for(int column=1; column<=BOARD_SIZE; column++)
-                board.put(new Coordinates(row,column), new Disk(Status.EMPTY));
+                boardMap.put(new Coordinates(row,column), new Disk(Status.EMPTY));
     }
     public void othelloSetup(){
         setDiskAt(new Coordinates(BOARD_SIZE/2,BOARD_SIZE/2), Status.BLACK);
@@ -22,7 +22,7 @@ public class Board {
         setDiskAt(new Coordinates(BOARD_SIZE/2,BOARD_SIZE/2+1), Status.WHITE);
     }
     public Disk getDiskAt(Coordinates coordinates){
-        return board.get(coordinates);
+        return boardMap.get(coordinates);
     }
     public Status getStatusAt(Coordinates coordinates){
         return getDiskAt(coordinates).getStatus();
@@ -32,7 +32,7 @@ public class Board {
     }
 
     public Set<Coordinates> coordinatesSet(){
-        return board.keySet();
+        return boardMap.keySet();
     }
 
     static final String LINE = "  +---+---+---+---+---+---+---+---+"+lineSeparator();

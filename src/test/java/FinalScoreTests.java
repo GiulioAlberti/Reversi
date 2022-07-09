@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
 
-public class finalScoreTests {
+public class FinalScoreTests {
     @Test
     void scoreCalculate(){
         Board board =new Board();

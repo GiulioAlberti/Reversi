@@ -37,7 +37,7 @@ public class MoveTests {
         Coordinates[] arrayOfCoordinates={new Coordinates("4f"),new Coordinates("3e"),
                 new Coordinates("5c"),new Coordinates("6d")};
         List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
-        assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
+        assertTrue(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
     }
     @Test
     void noAvailableMoves(){
@@ -48,7 +48,7 @@ public class MoveTests {
         board.setDiskAt(new Coordinates("4e"),Status.WHITE);
         Move move=new Move(board, disk);
         List<Coordinates> listOfOptions = move.availableMoves();
-        assert(listOfOptions.isEmpty());
+        assertTrue(listOfOptions.isEmpty());
 
     }
     @Test
@@ -65,7 +65,7 @@ public class MoveTests {
         Coordinates[] arrayOfCoordinates={new Coordinates("1a"),new Coordinates("1e"),
                 new Coordinates("5a"),new Coordinates("5e")};
         List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
-        assert(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
+        assertTrue(listOfOptions.containsAll(correct) && correct.containsAll(listOfOptions));
     }
     @Test
     void listOfCapturedDisks(){
@@ -85,7 +85,7 @@ public class MoveTests {
         Coordinates[] arrayOfCoordinates={new Coordinates("3b"),new Coordinates("4b"),
                 new Coordinates("5b"),new Coordinates("2c"),new Coordinates("3c")};
         List<Coordinates> correct = Arrays.asList(arrayOfCoordinates);
-        assert(listOfCaptured.containsAll(correct) && correct.containsAll(listOfCaptured));
+        assertTrue(listOfCaptured.containsAll(correct) && correct.containsAll(listOfCaptured));
     }
     @Test
     void firstCapture() throws URISyntaxException, IOException {
