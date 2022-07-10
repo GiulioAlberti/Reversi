@@ -12,16 +12,8 @@ public class GreedyPlayer extends Player {
     @Override
     public Coordinates chooseMove(Move move){
         List<Coordinates> available= move.availableMoves();
-        Coordinates greedyChoice= available.get(0);
-        int index=0;
-        int numberOfCaptures =move.capturedDisksWith(greedyChoice).size();
-        for (int i=0; i<available.size(); i++){
-            if(move.capturedDisksWith(available.get(i)).size()>numberOfCaptures){
-                index=i;
-                numberOfCaptures=move.capturedDisksWith(available.get(i)).size();
-            }
-        }
-        Coordinates chosenCoordinates=available.get(index);
+        int maxCaptures= available.stream().mapToInt(coordinates -> move.capturedDisksWith(coordinates).size()).max().orElse(-1);
+        Coordinates chosenCoordinates= available.stream().parallel().filter(coordinates -> move.capturedDisksWith(coordinates).size()==maxCaptures).findAny().orElseThrow(() -> new RuntimeException("No Such Element"));
         System.out.println("The chosen move is "+chosenCoordinates);
         return chosenCoordinates;
     }
