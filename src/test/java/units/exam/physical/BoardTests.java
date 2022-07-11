@@ -10,7 +10,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BoardTests {
+class BoardTests {
     @Test
     void othelloSetup() throws IOException, URISyntaxException {
         URL file= getClass().getClassLoader().getResource("OthelloSetup");

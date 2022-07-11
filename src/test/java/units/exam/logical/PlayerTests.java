@@ -15,7 +15,7 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PlayerTests {
+class PlayerTests {
     @Test
     void humanPlayerMove(){
         Board board =new Board();

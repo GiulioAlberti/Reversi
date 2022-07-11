@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CoordinatesTests {
+class CoordinatesTests {
     @Test
     void coordinatesToString(){
         Coordinates coordinates = new Coordinates(5,3);

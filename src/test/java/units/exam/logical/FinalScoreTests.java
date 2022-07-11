@@ -11,7 +11,7 @@ import units.exam.physical.Status;
 import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FinalScoreTests {
+class FinalScoreTests {
     @Test
     void scoreCalculate(){
         Board board =new Board();
