@@ -8,7 +8,7 @@ public abstract class Player {
     private final String name;
     protected final Disk disk;
 
-    public Player(String name, Disk disk) {
+    protected Player(String name, Disk disk) {
         this.name = name;
         this.disk = disk;
     }
