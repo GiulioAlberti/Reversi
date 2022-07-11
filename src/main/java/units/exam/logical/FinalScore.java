@@ -13,7 +13,7 @@ public class FinalScore {
     private int blackScore;
     private int whiteScore;
 
-    public FinalScore(Board board, Player whitePlayer, Player blackPlayer){
+    protected FinalScore(Board board, Player whitePlayer, Player blackPlayer){
         this.board=board;
         this.whitePlayer=whitePlayer;
         this.blackPlayer=blackPlayer;
@@ -21,15 +21,15 @@ public class FinalScore {
         this.blackScore=0;
     }
 
-    public int getBlackScore() {
+    protected int getBlackScore() {
         return blackScore;
     }
 
-    public int getWhiteScore() {
+    protected int getWhiteScore() {
         return whiteScore;
     }
 
-    public void pointsCalculator(){
+    protected void pointsCalculator(){
         for(int row=1; row<=BOARD_SIZE; row++){
             for(int column=1; column<=BOARD_SIZE; column++){
                 Status currentStatus=board.getStatusAt(new Coordinates(row,column));
@@ -42,7 +42,7 @@ public class FinalScore {
         }
     }
 
-    public void declareFinalScore(){
+    protected void declareFinalScore(){
         if(whiteScore==blackScore){
             System.out.println("It's a tie!");
         }

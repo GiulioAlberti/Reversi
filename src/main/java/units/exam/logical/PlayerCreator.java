@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class PlayerCreator {
     protected Scanner sin;
-    public PlayerCreator(Scanner sin){
+    protected PlayerCreator(Scanner sin){
         this.sin=sin;
     }
-    Player createPlayer(Disk disk){
+    protected Player createPlayer(Disk disk){
         char typeOfPlayer = defineTypeOfPlayer();
         String name = getPlayerNameFromInput();
         Player player;

@@ -17,7 +17,7 @@ public class Move {
         this.enemyDisk = new Disk((disk.getStatus()== Status.BLACK)? Status.WHITE : Status.BLACK);
     }
 
-    public Stream<Coordinates> findEnemyPiecesToCapture(Coordinates coordinates, Direction direction){
+    protected Stream<Coordinates> findEnemyPiecesToCapture(Coordinates coordinates, Direction direction){
         Stream.Builder<Coordinates> builder=Stream.builder();
         Coordinates updatedCoordinates = coordinates.moveInDirection(direction,1);
         while(updatedCoordinates.areValid() && board.getDiskAt(updatedCoordinates).equals(enemyDisk)){
@@ -27,24 +27,24 @@ public class Move {
         return builder.build();
     }
 
-    public boolean canCaptureInAGivenDirection(Coordinates coordinates, Direction direction) {
+    protected boolean canCaptureInAGivenDirection(Coordinates coordinates, Direction direction) {
         int numberOfDisksToCapture = (int) findEnemyPiecesToCapture(coordinates, direction).count();
         if(!coordinates.moveInDirection(direction,numberOfDisksToCapture+1).areValid()){return false;}
         return numberOfDisksToCapture>0 && board.getDiskAt(coordinates.moveInDirection(direction,numberOfDisksToCapture+1)).equals(disk);
     }
-    public boolean isCandidateMove(Coordinates coordinates){
+    protected boolean isCandidateMove(Coordinates coordinates){
         return board.getDiskAt(coordinates).isEmpty() && Stream.of(Direction.values())
                 .anyMatch(direction -> canCaptureInAGivenDirection(coordinates,direction));
     }
 
-    public List<Coordinates> availableMoves(){
+    protected List<Coordinates> availableMoves(){
         return board.coordinatesSet().stream().filter(this::isCandidateMove).collect(Collectors.toList());
     }
-    public List<Coordinates> capturedDisksWith(Coordinates coordinates){
+    protected List<Coordinates> capturedDisksWith(Coordinates coordinates){
         return Stream.of(Direction.values()).filter(direction -> canCaptureInAGivenDirection(coordinates,direction))
                 .flatMap(direction -> findEnemyPiecesToCapture(coordinates, direction)).collect(Collectors.toList());
     }
-    public void placeDiskAndCapture(Coordinates coordinates){
+    protected void placeDiskAndCapture(Coordinates coordinates){
         List<Coordinates> enemyCapturedDisks = capturedDisksWith(coordinates);
         board.setDiskAt(coordinates,disk.getStatus());
         for (Coordinates enemyCoordinates : enemyCapturedDisks){
