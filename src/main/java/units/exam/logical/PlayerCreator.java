@@ -24,7 +24,7 @@ public class PlayerCreator {
         }
         return player;
     }
-    private char defineTypeOfPlayer(){
+    protected char defineTypeOfPlayer(){
         System.out.println("What type of player do you want? '1' if human, '2' if greedy, '3' if random: ");
         char type;
         do {

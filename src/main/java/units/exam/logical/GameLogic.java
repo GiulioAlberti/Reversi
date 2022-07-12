@@ -40,12 +40,19 @@ public class GameLogic {
             }
             else {
                 passCounter=0;
-                Coordinates chosenMove=currentPlayer.chooseMove(turnMove);
-                turnMove.placeDiskAndCapture(chosenMove);
-                System.out.println(board);
+                actualTurn(board, currentPlayer, turnMove);
             }
         }while (true);
-        FinalScore finalScore=new FinalScore(board,playerW,playerB);
+        endGame(board, playerW, playerB);
+    }
+    private void actualTurn(Board board, Player currentPlayer, Move turnMove) {
+        Coordinates chosenMove= currentPlayer.chooseMove(turnMove);
+        turnMove.placeDiskAndCapture(chosenMove);
+        System.out.println(board);
+    }
+    private void endGame(Board board, Player playerW, Player playerB) {
+        System.out.println("There are no more available moves for both players! Let's see who won...");
+        FinalScore finalScore=new FinalScore(board, playerW, playerB);
         finalScore.pointsCalculator();
         finalScore.declareFinalScore();
     }

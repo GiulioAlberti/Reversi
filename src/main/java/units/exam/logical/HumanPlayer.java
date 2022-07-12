@@ -10,12 +10,12 @@ public class HumanPlayer extends Player {
     public static void setScanner(Scanner sin) {
         HumanPlayer.sin = sin;
     }
-    public HumanPlayer(String name, Disk disk, Scanner sin) {
+    protected HumanPlayer(String name, Disk disk, Scanner sin) {
         super(name, disk);
         setScanner(sin);
     }
     @Override
-    public Coordinates chooseMove(Move move){
+    protected Coordinates chooseMove(Move move){
         System.out.println(getName()+" please enter the coordinates for your move:");
         String stringInput;
         Coordinates coordinates;

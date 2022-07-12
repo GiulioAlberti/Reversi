@@ -18,5 +18,5 @@ public abstract class Player {
     public String getName() {
         return name;
     }
-    public abstract Coordinates chooseMove(Move move);
+    protected abstract Coordinates chooseMove(Move move);
 }
