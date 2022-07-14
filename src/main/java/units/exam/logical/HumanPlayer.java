@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {
-    private static Scanner sin;
-    public static void setScanner(Scanner sin) {
-        HumanPlayer.sin = sin;
-    }
+    private final Scanner sin;
     protected HumanPlayer(String name, Disk disk, Scanner sin) {
         super(name, disk);
-        setScanner(sin);
+        this.sin=sin;
     }
     @Override
     protected Coordinates chooseMove(Move move){

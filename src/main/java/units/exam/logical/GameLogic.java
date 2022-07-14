@@ -44,6 +44,7 @@ public class GameLogic {
             }
         }while (true);
         endGame(board, playerW, playerB);
+        askIfPlayAgain();
     }
     private void actualTurn(Board board, Player currentPlayer, Move turnMove) {
         Coordinates chosenMove= currentPlayer.chooseMove(turnMove);
@@ -55,5 +56,23 @@ public class GameLogic {
         FinalScore finalScore=new FinalScore(board, playerW, playerB);
         finalScore.pointsCalculator();
         finalScore.declareFinalScore();
+    }
+    private void askIfPlayAgain() {
+        System.out.println("Do you want to play another game? Y = Yes, N = No ");
+        boolean anotherMatch=false;
+        char type;
+        do {
+            type = sin.next().charAt(0);
+            if (type == 'Y'){
+                anotherMatch= true;
+                break;
+            }
+            else if(type == 'N'){
+                break;
+            }
+            System.out.println("That's not an option! Y = Yes, N = No");
+        }
+        while (true);
+        if (anotherMatch) this.initializeGame();
     }
 }
