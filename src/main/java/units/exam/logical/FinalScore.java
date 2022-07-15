@@ -2,9 +2,6 @@ package units.exam.logical;
 
 import units.exam.physical.Board;
 import units.exam.physical.Coordinates;
-import units.exam.physical.Status;
-
-import static units.exam.physical.Board.BOARD_SIZE;
 
 public class FinalScore {
     private final Board board;
@@ -30,15 +27,12 @@ public class FinalScore {
     }
 
     protected void pointsCalculator(){
-        for(int row = 1; row <= BOARD_SIZE; row++){
-            for(int column = 1; column <= BOARD_SIZE; column++){
-                Status currentStatus = board.getStatusAt(new Coordinates(row,column));
-                switch (currentStatus){
+        for(Coordinates coordinates : board.coordinatesSet()){
+                switch (board.getStatusAt(coordinates)){
                     case WHITE -> whiteScore += 1;
                     case BLACK -> blackScore += 1;
                     case EMPTY ->{}
                 }
-            }
         }
     }
 
