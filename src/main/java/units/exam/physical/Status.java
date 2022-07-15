@@ -6,9 +6,11 @@ public enum Status {
     WHITE('W');
 
     private final char symbol;
+
     Status(char symbol){
-        this.symbol=symbol;
+        this.symbol = symbol;
     }
+
     char symbol(){
         return symbol;
     }

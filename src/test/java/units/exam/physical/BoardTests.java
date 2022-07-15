@@ -13,20 +13,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BoardTests {
     @Test
     void othelloSetup() throws IOException, URISyntaxException {
-        URL file= getClass().getClassLoader().getResource("OthelloSetup");
+        URL file = getClass().getClassLoader().getResource("OthelloSetup");
         assert file != null;
         String boardString = Files.readString(Path.of(file.toURI()));
-        Board board =new Board();
+        Board board = new Board();
         board.othelloSetup();
         assertEquals(boardString, board.toString());
     }
 
     @Test
     void artificialFirstMove() throws IOException, URISyntaxException {
-        URL file= getClass().getClassLoader().getResource("FirstMove");
+        URL file = getClass().getClassLoader().getResource("FirstMove");
         assert file != null;
         String boardString = Files.readString(Path.of(file.toURI()));
-        Board board =new Board();
+        Board board = new Board();
         board.othelloSetup();
         board.setDiskAt(new Coordinates(5,3), Status.BLACK);
         board.setDiskAt(new Coordinates(5,4), Status.BLACK);

@@ -4,7 +4,7 @@ public class Disk {
     private Status status;
 
     public Disk(Status status){
-        this.status=status;
+        this.status = status;
     }
 
     public Status getStatus() {
@@ -12,7 +12,7 @@ public class Disk {
     }
 
     public void changeStatusTo(Status status){
-        this.status=status;
+        this.status = status;
     }
 
     public boolean isEmpty(){
@@ -27,6 +27,7 @@ public class Disk {
         Disk disk = (Disk) o;
         return status == disk.status;
     }
+
     @Override
     public int hashCode() {
         return status.hashCode();
