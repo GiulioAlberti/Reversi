@@ -16,8 +16,8 @@ class CoordinatesTests {
 
     @ParameterizedTest
     @CsvSource({"6f, 6f", "2e, 2e", "4h, 4h"})
-    void stringCoordinatesToString(String coord ,String expected){
-        Coordinates coordinates = new Coordinates(coord);
+    void stringCoordinatesToString(String coordinatesAsString ,String expected){
+        Coordinates coordinates = new Coordinates(coordinatesAsString);
         assertEquals(expected, coordinates.toString());
     }
 
@@ -36,5 +36,12 @@ class CoordinatesTests {
         Coordinates newPosition = oldPosition.moveInDirection(direction, iterations);
         Coordinates expectedPosition = new Coordinates(expectedCoordinates);
         assertEquals(expectedPosition, newPosition);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1a, True", "9a, False", "3s, False", "8h, True", "0i, False"})
+    void checkIfValid(String coordinates , boolean validity){
+        Coordinates coordinatesToCheck = new Coordinates(coordinates);
+        assertEquals(validity,coordinatesToCheck.areValid());
     }
 }
