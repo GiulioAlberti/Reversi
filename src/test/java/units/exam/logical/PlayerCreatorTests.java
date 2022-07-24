@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerCreatorTests {
     @ParameterizedTest
-    @CsvSource({"1, 1", "2, 2", "3, 3", "25, 2","32222, 3"})
+    @CsvSource({"1, 1", "2, 2", "3, 3"})
     void testTypeDefinition(String input, char expectedChar){
         ByteArrayInputStream fakeScanner = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         PlayerCreator playerCreator = new PlayerCreator(new Scanner(fakeScanner));

@@ -29,15 +29,15 @@ public class PlayerCreator {
 
     protected char defineTypeOfPlayer(){
         System.out.println("What type of player do you want? '1' if human, '2' if greedy, '3' if random: ");
-        char type;
+        String type;
         do {
-            type = sin.next().charAt(0);
-            if (type == '1' || type == '2' || type == '3')
+            type = sin.next();
+            if (type.equals("1") || type.equals("2")  || type.equals("3"))
                 break;
             System.out.println("That's not an option! Please try again ");
         }
         while (true);
-        return type;
+        return type.charAt(0);
     }
 
     private String getPlayerNameFromInput(){
