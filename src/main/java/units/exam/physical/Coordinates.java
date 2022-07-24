@@ -13,7 +13,7 @@ public class Coordinates {
 
     public Coordinates(String input){
         this.row = input.charAt(0)-48;
-        this.column = (char)(input.charAt(1)-'a'+1);
+        this.column = input.charAt(1)-'a'+1;
     }
 
     public Coordinates moveInDirection(Direction direction, int iterations){

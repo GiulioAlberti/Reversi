@@ -21,7 +21,7 @@ public class HumanPlayer extends Player {
         List<Coordinates> available = move.availableMoves();
         do{
             stringInput = sin.nextLine();
-            if(stringInput.length()<2){
+            if(stringInput.length()!=2){
                 System.out.println("The coordinates must be of the form '1a'. ");
             }
             else{
