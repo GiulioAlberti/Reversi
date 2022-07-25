@@ -17,7 +17,7 @@ public class Move {
         this.enemyDisk = new Disk((disk.getStatus() == Status.BLACK)? Status.WHITE : Status.BLACK);
     }
 
-    protected Stream<Coordinates> findEnemyPiecesToCapture(Coordinates coordinates, Direction direction){
+    protected Stream<Coordinates> findEnemyDisksToCapture(Coordinates coordinates, Direction direction){
         Stream.Builder<Coordinates> builder = Stream.builder();
         Coordinates updatedCoordinates = coordinates.moveInDirection(direction,1);
         while(updatedCoordinates.areValid() && board.getDiskAt(updatedCoordinates).equals(enemyDisk)){
@@ -28,7 +28,7 @@ public class Move {
     }
 
     protected boolean canCaptureInAGivenDirection(Coordinates coordinates, Direction direction) {
-        int numberOfDisksToCapture = (int) findEnemyPiecesToCapture(coordinates, direction).count();
+        int numberOfDisksToCapture = (int) findEnemyDisksToCapture(coordinates, direction).count();
         if(!coordinates.moveInDirection(direction,numberOfDisksToCapture+1).areValid()){
             return false;
         }
@@ -46,7 +46,7 @@ public class Move {
 
     protected List<Coordinates> capturedDisksWith(Coordinates coordinates){
         return Stream.of(Direction.values()).filter(direction -> canCaptureInAGivenDirection(coordinates,direction))
-                .flatMap(direction -> findEnemyPiecesToCapture(coordinates, direction)).collect(Collectors.toList());
+                .flatMap(direction -> findEnemyDisksToCapture(coordinates, direction)).collect(Collectors.toList());
     }
 
     protected void placeDiskAndCapture(Coordinates coordinates){

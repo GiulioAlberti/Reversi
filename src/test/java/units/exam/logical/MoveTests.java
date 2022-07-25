@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MoveTests {
     @ParameterizedTest
     @CsvSource({"RIGHT, 5c", "DOWN, 6d", "LEFT, 4f", "UP, 3e"})
-    void canCaptureEnemyPiecesInADirection(Direction direction, String addedDisk){
+    void canCaptureEnemyDisksInADirection(Direction direction, String addedDisk){
         Board board = new Board();
         board.othelloSetup();
         Coordinates coordinates = new Coordinates(addedDisk);
